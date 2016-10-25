@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161024102241) do
+ActiveRecord::Schema.define(version: 20161025041835) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "type"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 20161024102241) do
     t.datetime "updated_at", null: false
     t.integer  "article_id"
     t.index ["article_id"], name: "index_comments_on_article_id", using: :btree
+  end
+
+  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "type"
   end
 
   add_foreign_key "comments", "articles"

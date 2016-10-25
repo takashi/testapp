@@ -122,3 +122,149 @@ WHERE fk.referenced_column_name is not null
   [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
   [1m[36mPublicComment Load (1.0ms)[0m  [1m[34mSELECT  `comments`.* FROM `comments` ORDER BY `comments`.`id` ASC LIMIT 1[0m
   [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT `articles`.* FROM `articles`[0m
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` ORDER BY `articles`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT GET_LOCK('1999073259241716420', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateImages (20161025034452)
+  [1m[35m (210.3ms)[0m  [1m[35mCREATE TABLE `images` (`id` int AUTO_INCREMENT PRIMARY KEY, `imagable_id` int, `imagable_type` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161025034452')[0m
+  [1m[35m (57.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.3ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT RELEASE_LOCK('1999073259241716420')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSHOW CREATE TABLE `articles`[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'articles'[0m
+  [1m[35m (0.7ms)[0m  [1m[35mSHOW CREATE TABLE `comments`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSHOW CREATE TABLE `images`[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'images'[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'testapp_development'
+  AND fk.table_name = 'articles'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'testapp_development'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'testapp_development'
+  AND fk.table_name = 'images'
+[0m
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` ORDER BY `articles`.`id` ASC LIMIT 1[0m
+  [1m[36mPublicImage Load (1.0ms)[0m  [1m[34mSELECT `images`.* FROM `images` WHERE `images`.`imagable_id` = 1 AND `images`.`imagable_type` = 'Article'[0m
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` ORDER BY `articles`.`id` ASC LIMIT 1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Load (1.0ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO `images` (`imagable_id`, `imagable_type`, `created_at`, `updated_at`) VALUES (1, 'Article', '2016-10-25 03:50:40', '2016-10-25 03:50:40')[0m
+  [1m[35m (32.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mImage Load (0.9ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mImage Load (1.5ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.5ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.0ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mImage Load (1.3ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.6ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.5ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.3ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.6ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.6ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  [1m[36mImage Load (1.0ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (0.9ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  [1m[36mImage Load (1.4ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mImage Load (1.4ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mPublicImage Load (1.6ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.3ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mPublicImage Load (1.6ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mPublicImage Load (2.2ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.4ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mImage Load (1.6ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mImage Load (1.3ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mImage Load (1.3ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mPublicImage Load (1.3ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT DATABASE() as db[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT GET_LOCK('1999073259241716420', 0);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to AddTypeToImage (20161025041835)
+  [1m[35m (339.0ms)[0m  [1m[35mALTER TABLE `images` ADD `type` varchar(255)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20161025041835')[0m
+  [1m[35m (29.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT RELEASE_LOCK('1999073259241716420')[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (1.8ms)[0m  [1m[35mSHOW CREATE TABLE `articles`[0m
+  [1m[35m (1.0ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'articles'[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSHOW CREATE TABLE `comments`[0m
+  [1m[35m (0.8ms)[0m  [1m[35mSHOW CREATE TABLE `images`[0m
+  [1m[35m (0.9ms)[0m  [1m[35mSHOW TABLE STATUS LIKE 'images'[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'testapp_development'
+  AND fk.table_name = 'articles'
+[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'testapp_development'
+  AND fk.table_name = 'comments'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT fk.referenced_table_name as 'to_table'
+      ,fk.referenced_column_name as 'primary_key'
+      ,fk.column_name as 'column'
+      ,fk.constraint_name as 'name'
+FROM information_schema.key_column_usage fk
+WHERE fk.referenced_column_name is not null
+  AND fk.table_schema = 'testapp_development'
+  AND fk.table_name = 'images'
+[0m
+  [1m[35mSQL (33.6ms)[0m  [1m[31mDELETE FROM `images`[0m
+  [1m[36mArticle Load (2.2ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` ORDER BY `articles`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (1.7ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` ORDER BY `articles`.`id` ASC LIMIT 1[0m
+  [1m[36mPublicImage Load (1.2ms)[0m  [1m[34mSELECT `images`.* FROM `images` WHERE `images`.`type` IN ('PublicImage') AND `images`.`imagable_id` = 1 AND `images`.`imagable_type` = 'Article'[0m
+  [1m[36mArticle Load (1.8ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` ORDER BY `articles`.`id` ASC LIMIT 1[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT  `articles`.* FROM `articles` WHERE `articles`.`id` = 1 LIMIT 1[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO `images` (`imagable_id`, `imagable_type`, `created_at`, `updated_at`, `type`) VALUES (1, 'Article', '2016-10-25 04:19:31', '2016-10-25 04:19:31', 'PublicImage')[0m
+  [1m[35m (56.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mImage Load (1.7ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mImage Load (2.6ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mImage Load (1.8ms)[0m  [1m[34mSELECT  `images`.* FROM `images` ORDER BY `images`.`id` ASC LIMIT 1[0m
+  [1m[36mArticle Load (1.2ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mImage Load (1.4ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
+  [1m[36mImage Load (1.2ms)[0m  [1m[34mSELECT `images`.* FROM `images`[0m
+  [1m[36mArticle Load (1.1ms)[0m  [1m[34mSELECT `articles`.* FROM `articles` WHERE `articles`.`id` = 1[0m
